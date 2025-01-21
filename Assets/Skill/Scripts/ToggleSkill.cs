@@ -34,7 +34,7 @@ public class ToggleSkill : MonoBehaviour
         {
            
             int a=  PlayerPrefs.GetInt(name);
-            Debug.Log("a"+ a);
+          
             if (a == 1&& (bool)canOn?.Invoke())
             {
                 OnTF.gameObject.SetActive(true);

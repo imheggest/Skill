@@ -21,7 +21,7 @@ public class SkillMenu : MenuBase
         public string skillInfo;
         public ToggleSkill toggleSkill;
         public BuyChooseSkillItem buyChooseSkillItem;
-        public bool isUnlock;
+        public Func<bool> isUnlock;
 
     }
     [SerializeField]
@@ -58,20 +58,21 @@ public class SkillMenu : MenuBase
     //道具面板
     [HideInInspector]
     public  SkillPrizeIcon[] skillPrizeIcons;
-    
+    #region Menu
     public override void InitItem()
     {
         base.InitItem();
         skillPrizeIcons = skillIconsTF.GetComponentsInChildren<SkillPrizeIcon>();
         ChangeIcon();
-      
-       
+
+
         SetUseSkill();
         //InitOffToOn
         SetSkillToggle();
         SetRandomSkillToggle();
         //
         SetSkillBuy();
+        SetSkillLock();
         playButton.onClick.AddListener(() =>
         {
             for (int i = 0; i < skills.Length; i++)
@@ -104,6 +105,34 @@ public class SkillMenu : MenuBase
             free.transform.gameObject.SetActive(false);
         });
     }
+    public override void OpenMenu()
+    {
+        base.OpenMenu();
+        randomSkillTF.transform.gameObject.SetActive(false);
+        skillIconsTF.DOLocalMoveY(0, 0.01f);
+
+        free.transform.gameObject.SetActive(true);
+
+        ChangeIcon();
+        SkillOpen();
+        for (int i = 0; i < skills.Length; i++)
+        {
+            bool locked = (bool)skills[i].isUnlock?.Invoke();
+            skills[i].toggleSkill.gameObject.SetActive(locked);
+
+        }
+        randomSkillIndex = -1;
+
+
+    }
+    public override void CloseMenu()
+    {
+        base.CloseMenu();
+        randomSkillIndex = -1;
+
+    }
+    #endregion
+
     int openSkillInfo=-1;
     public void SetSkillInfo(int index,string content) {
         if (index== openSkillInfo)
@@ -173,30 +202,17 @@ public class SkillMenu : MenuBase
 
     }
 
-    public override void OpenMenu()
-    {
-        base.OpenMenu();
-        randomSkillTF.transform.gameObject.SetActive(false);
-        skillIconsTF.DOLocalMoveY(0, 0.01f);
-
-        free.transform.gameObject.SetActive(true);
-
-        ChangeIcon();
-        SkillOpen();
-        for (int i = 0; i < skills.Length; i++)
-        {
-            skills[i].toggleSkill.gameObject.SetActive(skills[i].isUnlock);
-
-        }
-        randomSkillIndex = -1;
-      
-
-    }
-    public override void CloseMenu()
-    {
-        base.CloseMenu();
-        randomSkillIndex = -1;
-       
+  
+    /// <summary>
+    /// 特定条件将技能解锁
+    /// </summary>
+    private void SetSkillLock() {
+        skills[0].isUnlock = null;
+        skills[0].isUnlock = () => { return true; };
+        skills[1].isUnlock = null;
+        skills[1].isUnlock = () => { return true; };
+        skills[2].isUnlock = null;
+        skills[2].isUnlock = () => { return true; };
     }
     //购买技能
     private void SetSkillBuy()
@@ -241,7 +257,7 @@ public class SkillMenu : MenuBase
     private void SetUseSkill()
     {
         skills[0].toggleSkill.InitUseSkill(() => {
-            if (!skills[0].isUnlock)
+            if (!(bool)skills[0].isUnlock?.Invoke())
             {
                 return;
              
@@ -254,7 +270,7 @@ public class SkillMenu : MenuBase
 
         });
         skills[1].toggleSkill.InitUseSkill(() => {
-            if (!skills[1].isUnlock)
+            if (!(bool)skills[1].isUnlock?.Invoke())
             {
                 return;
 
@@ -268,7 +284,7 @@ public class SkillMenu : MenuBase
             //code 修改技能的数量
         });
         skills[2].toggleSkill.InitUseSkill(() => {
-            if (!skills[2].isUnlock)
+            if (!(bool)skills[2].isUnlock?.Invoke())
             {
                 return;
 
@@ -317,7 +333,7 @@ public class SkillMenu : MenuBase
         skills[0].toggleSkill.InitToggle(
             () =>
             {
-                Debug.Log("点击开启");
+                Debug.Log("尝试开启");
                 SetSkillInfo(0, skills[0].skillInfo);
                 //code 返回  技能可以开启的条件
                 return true;
@@ -325,7 +341,7 @@ public class SkillMenu : MenuBase
             () =>
             {
 
-                Debug.Log("点击关闭");
+                Debug.Log("尝试关闭");
                 SetSkillInfo(0, skills[0].skillInfo);
                 //code 返回 技能可关闭的条件
                 return true;
@@ -368,13 +384,13 @@ public class SkillMenu : MenuBase
         skills[1].toggleSkill.InitToggle(
             () =>
             {
-                Debug.Log("点击开启");
+                Debug.Log("尝试开启");
                 SetSkillInfo(1, skills[1].skillInfo);
                 return true;
             },
             () =>
             {
-                Debug.Log("点击关闭");
+                Debug.Log("尝试关闭");
                 SetSkillInfo(1, skills[1].skillInfo);
                 return true;
             },
@@ -408,13 +424,13 @@ public class SkillMenu : MenuBase
         skills[2].toggleSkill.InitToggle(
             () =>
             {
-                Debug.Log("点击开启");
+                Debug.Log("尝试开启");
                 SetSkillInfo(2, skills[2].skillInfo);
                 return true;
             },
             () =>
             {
-                Debug.Log("点击关闭");
+                Debug.Log("尝试关闭");
                 SetSkillInfo(2, skills[2].skillInfo);
                 return true;
             },
@@ -443,10 +459,16 @@ public class SkillMenu : MenuBase
             () => { Debug.Log("技能3开=>关失败"); }
            );
     }
+
+    /// <summary>
+    /// 存储技能默认是否开启
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="isOn"></param>
     private void SaveSkillIsOn(string name,int isOn)
     {
         PlayerPrefs.SetInt(name, isOn);
-        Debug.Log(name+PlayerPrefs.GetInt(name));
+       
         PlayerPrefs.Save();
     }
     /// <summary>
@@ -492,7 +514,7 @@ public class SkillMenu : MenuBase
     private void SkillOpen()
     {
         //code 技能的数量
-        //ecample   skills[0].toggleSkill.OpenSet(skills[0].skillName,tipCount);
+        //example   skills[0].toggleSkill.OpenSet(skills[0].skillName,tipCount);
         skills[0].toggleSkill.OpenSet(skills[0].skillName,1);
         skills[1].toggleSkill.OpenSet(skills[1].skillName, 1);
         skills[2].toggleSkill.OpenSet(skills[2].skillName,1);
