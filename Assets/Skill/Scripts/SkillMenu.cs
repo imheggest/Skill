@@ -559,7 +559,8 @@ public class SkillMenuEditor : Editor
         base.OnInspectorGUI();
         if (GUILayout.Button("¸üÐÂ×ªÅÌ"))
         {
-        GameObject.Find("SkillMenu").GetComponent<SkillMenu>().   UpdataPrize();
+            var skillMenu = (SkillMenu)target;
+            skillMenu.UpdataPrize();
         }
     }
 
