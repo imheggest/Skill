@@ -549,6 +549,7 @@ public class SkillMenu : MenuBase
         Debug.Log(iconSize.y + space);
     }
 }
+#if UNITY_EDITOR
 [CustomEditor(typeof(SkillMenu))]
 public class SkillMenuEditor : Editor
 {
@@ -565,3 +566,4 @@ public class SkillMenuEditor : Editor
     }
 
 }
+#endif
