@@ -12,4 +12,6 @@ GameSkillMenu
 ![QQ_1738812017164](https://github.com/user-attachments/assets/d2a70be9-713f-452f-9d93-60451d30bc53)
 激励广告随机获得免费的技能
 ![QQ_1738812093215](https://github.com/user-attachments/assets/2976d4e3-334d-4774-8d9f-89b596610f2b)
+配置随机获得免费的技能，配置完成后点击更新转盘按钮更新UI
+![QQ_1738812147893](https://github.com/user-attachments/assets/12ad89a7-8675-4854-b427-88fbc4054bea)
 
