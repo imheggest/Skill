@@ -21,5 +21,8 @@ GameSkillMenu
 条件true表示会显示可消耗技能在UI界面给玩家选择，一般用于特定关卡的技能解锁，如：当关卡大于20关解锁第二个技能
 ![QQ_1738812702480](https://github.com/user-attachments/assets/7ef7e73e-5439-4188-bcb6-568fff8a0b88)
 
+当消耗技能的数量为0时，点击选择技能会弹出购买技能窗口，点击购买按钮会调用以下的代码
+![QQ_1738812910335](https://github.com/user-attachments/assets/cb00cfaf-23d9-4616-82b6-58939f2c34a5)
+
 
 
