@@ -10,4 +10,6 @@ GameSkillMenu
 ![QQ_1738811877539](https://github.com/user-attachments/assets/469d9d07-3bf4-41ec-af06-c98771685e2e)
 技能的详细介绍组件
 ![QQ_1738812017164](https://github.com/user-attachments/assets/d2a70be9-713f-452f-9d93-60451d30bc53)
+激励广告随机获得免费的技能
+![QQ_1738812093215](https://github.com/user-attachments/assets/2976d4e3-334d-4774-8d9f-89b596610f2b)
 
