@@ -24,5 +24,13 @@ GameSkillMenu
 当消耗技能的数量为0时，点击选择技能会弹出购买技能窗口，点击购买按钮会调用以下的代码
 ![QQ_1738812910335](https://github.com/user-attachments/assets/cb00cfaf-23d9-4616-82b6-58939f2c34a5)
 
+当技能被选择，玩家开始游戏时会调用以下的代码
+
+![QQ_1738813129767](https://github.com/user-attachments/assets/f002ccec-e6da-4e84-9eae-48f22b55ed86)
+
+观看激励广告后，会抽取一个技能，调用被抽取技能的代码
+![QQ_1738813201866](https://github.com/user-attachments/assets/2c0ee847-a26e-4563-ac9a-fa622ffb7a17)
+
+
 
 
