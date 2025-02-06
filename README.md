@@ -8,3 +8,6 @@ GameSkillMenu
 ![QQ_1738811773402](https://github.com/user-attachments/assets/6503604a-22db-44ff-b328-d9a81059bd92)
 包括技能的名字，介绍，技能的单选框组件，技能的购买组件
 ![QQ_1738811877539](https://github.com/user-attachments/assets/469d9d07-3bf4-41ec-af06-c98771685e2e)
+技能的详细介绍组件
+![QQ_1738812017164](https://github.com/user-attachments/assets/d2a70be9-713f-452f-9d93-60451d30bc53)
+
