@@ -30,6 +30,56 @@ GameSkillMenu
 
 观看激励广告后，会抽取一个技能，调用被抽取技能的代码
 ![QQ_1738813201866](https://github.com/user-attachments/assets/2c0ee847-a26e-4563-ac9a-fa622ffb7a17)
+toggle开启，关闭时会调用的代码，成功/失败选择技能，成功/失败取消技能
+example：skills[0].toggleSkill.InitToggle(
+            () =>
+            {
+                Debug.Log("尝试开启");
+                SetSkillInfo(0, skills[0].skillInfo);
+                //code 返回  技能可以开启的条件
+                return true;
+            },
+            () =>
+            {
+
+                Debug.Log("尝试关闭");
+                SetSkillInfo(0, skills[0].skillInfo);
+                //code 返回 技能可关闭的条件
+                return true;
+            },
+            () =>
+            {
+                Debug.Log("技能1关=>开成功");
+                skills[0].toggleSkill.OnTF.gameObject.SetActive(true);
+                skills[0].toggleSkill.offTF.gameObject.SetActive(false);
+
+                SaveSkillIsOn(skills[0].skillName,1);
+
+            },
+            () =>
+            {
+                Debug.Log("技能1关=>开失败");
+                if (skills[0].buyChooseSkillItem!=null)
+                {
+                    skills[0].buyChooseSkillItem.Open();
+                }
+               
+            },
+            () =>
+            {
+                Debug.Log("技能1开=>关成功");
+                skills[0].toggleSkill.OnTF.gameObject.SetActive(false);
+                skills[0].toggleSkill.offTF.gameObject.SetActive(true);
+             
+                SaveSkillIsOn(skills[0].skillName, 0);
+            },
+            () =>
+            {
+                Debug.Log("技能1开=>关失败");
+            }
+            );
+
+![QQ_1738813346240](https://github.com/user-attachments/assets/49e6a7b9-87e9-4f10-acf8-6f6ac5b002bb)
 
 
 
