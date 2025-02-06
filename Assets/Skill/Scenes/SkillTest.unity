@@ -3919,17 +3919,14 @@ MonoBehaviour:
     skillInfo: citieSkiillInfo
     toggleSkill: {fileID: 1778464245}
     buyChooseSkillItem: {fileID: 1951378687}
-    isUnlock: 1
   - skillName: tip
     skillInfo: tipSkiillInfo
     toggleSkill: {fileID: 1663063344}
     buyChooseSkillItem: {fileID: 627552299}
-    isUnlock: 1
   - skillName: time
     skillInfo: timeSkiillInfo
     toggleSkill: {fileID: 2069779606}
     buyChooseSkillItem: {fileID: 1072270724}
-    isUnlock: 1
   toggleRandomSkill: {fileID: 136859025}
   skillInfoItems:
   - {fileID: 224997841}
