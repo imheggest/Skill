@@ -30,8 +30,13 @@ GameSkillMenu
 
 观看激励广告后，会抽取一个技能，调用被抽取技能的代码
 ![QQ_1738813201866](https://github.com/user-attachments/assets/2c0ee847-a26e-4563-ac9a-fa622ffb7a17)
+
+
 toggle开启，关闭时会调用的代码，成功/失败选择技能，成功/失败取消技能
-example：skills[0].toggleSkill.InitToggle(
+example：
+
+
+skills[0].toggleSkill.InitToggle(
             () =>
             {
                 Debug.Log("尝试开启");
