@@ -15,6 +15,7 @@ GameSkillMenu
 配置随机获得免费的技能，配置完成后点击更新转盘按钮更新UI
 ![QQ_1738812147893](https://github.com/user-attachments/assets/12ad89a7-8675-4854-b427-88fbc4054bea)
 编写你自己的逻辑代码
-![Uploading QQ_1738812633698.png…]()
+![QQ_1738812702480](https://github.com/user-attachments/assets/7ef7e73e-5439-4188-bcb6-568fff8a0b88)
+
 
 
