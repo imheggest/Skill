@@ -15,6 +15,8 @@ GameSkillMenu
 配置随机获得免费的技能，配置完成后点击更新转盘按钮更新UI
 ![QQ_1738812147893](https://github.com/user-attachments/assets/12ad89a7-8675-4854-b427-88fbc4054bea)
 编写你自己的逻辑代码
+
+条件true表示会显示可消耗技能在UI界面给玩家选择，一般用于特定关卡的技能解锁，如：当关卡大于20关解锁第二个技能
 ![QQ_1738812702480](https://github.com/user-attachments/assets/7ef7e73e-5439-4188-bcb6-568fff8a0b88)
 
 
