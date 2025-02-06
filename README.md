@@ -34,7 +34,7 @@ GameSkillMenu
 
 toggle开启，关闭时会调用的代码，成功/失败选择技能，成功/失败取消技能
 开启的return bool为可以选择技能的条件，如return（技能数量>0）
-example：
+
 
 
 skills[0].toggleSkill.InitToggle(
