@@ -157,6 +157,7 @@ public class SkillMenu : MenuBase
     }
     private void SetRandomSkillToggle()
     {
+      
         toggleRandomSkill.InitToggle(
                () =>
                {

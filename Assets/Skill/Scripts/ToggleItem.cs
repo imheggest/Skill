@@ -89,9 +89,14 @@ public class ToggleItem : Toggle
      
       
     }
-
+    [SerializeField]
+    public bool useAniScale;
     private void AnimalScale()
     {
+        if (!useAniScale)
+        {
+            return;
+        } 
         transform.DOKill();
         transform.localScale = new Vector3(1,1,1);
         transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.5f,1,1);

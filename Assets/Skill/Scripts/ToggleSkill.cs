@@ -14,6 +14,8 @@ public class ToggleSkill : MonoBehaviour
     public TextMeshProUGUI count;
     UnityAction useSkill;
     public ToggleItem toggleItem;
+
+    public bool useAniScale;//是否使用点击缩放动画
  
     public void InitUseSkill(UnityAction a)
     {
@@ -101,7 +103,7 @@ public class ToggleSkill : MonoBehaviour
             canOn = onFunc;
             toggleItem.ToggleInit(onFunc, offFunc, trueOnAction, falseOnAction, trueOffAction, falseOffAction);
         }
-
+        toggleItem.useAniScale = this.useAniScale;
         }
     public void UseSkill() {
         if (toggleItem.isOn)
